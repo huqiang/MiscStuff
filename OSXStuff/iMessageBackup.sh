@@ -13,10 +13,10 @@ login=$1
 #Retrieve the text messages 
     
 sqlite3 ~/Library/Messages/chat.db "
-select is_from_me,text from message where handle_id=(
+select datetime(date,'unixepoch', 'localtime'), is_from_me,text from message where handle_id=(
 select handle_id from chat_handle_join where chat_id=(
 select ROWID from chat where guid='iMessage;-;$1')
-)" | sed 's/1\|/me: /g;s/0\|/budy: /g' > MessageBackup.txt
+)" | sed 's/1981/2012/1;s/1982/2013/1;s/1983/2014/1;s/1\|/me: /g;s/0\|/budy: /g' > MessageBackup.txt
 
 
 #Retrieve the attached stored in the local cache
